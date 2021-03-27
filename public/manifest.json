@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Material E-Commerce",
+  "name": "react e-commerce template using create-react-app and material-ui",
   "icons": [
     {
       "src": "favicon.ico",
