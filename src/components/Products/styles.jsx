@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   cardMedia: {
     paddingTop: "56.25%", // 16:9
   },
+  titlePrice: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   cardContent: {
     flexGrow: 1,
   },
