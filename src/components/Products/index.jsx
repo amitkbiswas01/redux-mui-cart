@@ -11,7 +11,8 @@ import Container from "@material-ui/core/Container";
 
 import useStyles from "./styles";
 import LoadingSpinner from "../Loading/index";
-import getProducts from "../../services/getProducts";
+import data from "../../services/data";
+// import getProducts from "../../services/getProducts";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -20,14 +21,25 @@ function Products() {
   const history = useHistory();
   const classes = useStyles();
 
+  // useEffect(() => {
+  //   getProducts()
+  //     .then((products) => {
+  //       setProducts(products);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   useEffect(() => {
-    getProducts()
-      .then((products) => {
-        setProducts(products);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+    setTimeout(() => {
+      setProducts(data);
+      setLoading(false);
+    }, 2000);
   }, []);
+
+  const showDetails = (id) => {
+    history.push(`/products/${id}/`);
+  };
 
   return (
     <>
@@ -35,7 +47,7 @@ function Products() {
         <LoadingSpinner />
       ) : (
         <>
-          <Container className={classes.heroTitle} maxWidth="md">
+          <Container maxWidth="md">
             <Typography
               component="h1"
               variant="h3"
@@ -76,10 +88,18 @@ function Products() {
                           ${product.price}
                         </Typography>
                       </Container>
-                      <Typography>{product.description}</Typography>
+                      <Typography>
+                        {product.description.slice(0, 127)} ...
+                      </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small" color="primary">
+                      <Button
+                        size="small"
+                        color="primary"
+                        onClick={() => {
+                          showDetails(product.id);
+                        }}
+                      >
                         Details
                       </Button>
                       <Button size="small" color="primary">

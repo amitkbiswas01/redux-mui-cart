@@ -39,11 +39,11 @@ function Landing() {
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary">
-                <Link component={RouterLink} to="/" color="inherit">
+              <Link component={RouterLink} to="/" color="inherit">
+                <Button variant="outlined" color="primary">
                   Cart
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </div>

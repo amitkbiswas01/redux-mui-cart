@@ -5,7 +5,10 @@ import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: "80vh",
     display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     "& > * + *": {
       marginLeft: theme.spacing(2),
     },
@@ -18,6 +21,7 @@ function LoadingSpinner() {
   return (
     <Container maxWidth="md" className={classes.root}>
       <CircularProgress color="primary" />
+      <CircularProgress color="secondary" />
       <CircularProgress color="primary" />
     </Container>
   );

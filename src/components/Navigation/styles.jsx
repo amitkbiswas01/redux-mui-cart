@@ -4,6 +4,9 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  bottomMargin: {
+    marginBottom: "5rem",
+  },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {

@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "./components/Home/index";
 import Products from "./components/Products/index";
+import Product from "./components/Product/index";
 import NotFound from "./components/404/index";
 
 function RouterSwitch() {
@@ -14,6 +15,9 @@ function RouterSwitch() {
         </Route>
         <Route exact path="/products">
           <Products />
+        </Route>
+        <Route exact path="/products/:id">
+          <Product />
         </Route>
         <Route exact path="/404">
           <NotFound />

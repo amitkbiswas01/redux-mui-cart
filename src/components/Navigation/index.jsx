@@ -90,65 +90,68 @@ export default function Navbar() {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            <Link component={RouterLink} to="/" color="inherit">
-              Material E-Commerce
-            </Link>
-          </Typography>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="products" color="inherit">
-              <Typography variant="subtitle1" noWrap>
-                <Link component={RouterLink} to="/products" color="inherit">
-                  Products
-                </Link>
-              </Typography>
-            </IconButton>
-            <IconButton
-              className={classes.cart}
-              aria-label="show new mails"
-              color="inherit"
-            >
-              <Badge
-                className={classes.cartIcon}
-                badgeContent={4}
-                color="secondary"
+    <>
+      <div className={classes.grow}>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              <Link component={RouterLink} to="/" color="inherit">
+                Material E-Commerce
+              </Link>
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="products" color="inherit">
+                <Typography variant="subtitle1" noWrap>
+                  <Link component={RouterLink} to="/products" color="inherit">
+                    Products
+                  </Link>
+                </Typography>
+              </IconButton>
+              <IconButton
+                className={classes.cart}
+                aria-label="show new mails"
+                color="inherit"
               >
-                <ShoppingCartIcon />
-              </Badge>
-              <Typography variant="subtitle1" noWrap>
-                Cart
-              </Typography>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+                <Badge
+                  className={classes.cartIcon}
+                  badgeContent={4}
+                  color="secondary"
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+                <Typography variant="subtitle1" noWrap>
+                  Cart
+                </Typography>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+      <div className={classes.bottomMargin} />
+    </>
   );
 }

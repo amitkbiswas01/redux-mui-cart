@@ -3,10 +3,10 @@ import RouterSwitch from "./router";
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar />
       <RouterSwitch />
-    </>
+    </div>
   );
 }
 
