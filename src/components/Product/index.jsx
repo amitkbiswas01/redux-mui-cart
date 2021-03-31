@@ -6,10 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 
-import { Link as RouterLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import useStyles from "./styles";
@@ -79,15 +77,13 @@ function Product() {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Link component={RouterLink} to="/" color="inherit">
-                      <Button
-                        onClick={() => dispatch(addToCart(product.id))}
-                        variant="outlined"
-                        color="primary"
-                      >
-                        Add to Cart
-                      </Button>
-                    </Link>
+                    <Button
+                      onClick={() => dispatch(addToCart(product.id))}
+                      variant="outlined"
+                      color="primary"
+                    >
+                      Add to Cart
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
