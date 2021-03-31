@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
+  header: {
+    marginTop: "7.5rem",
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -14,19 +14,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "56.25%",
   },
-  titlePrice: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+  description: {
+    padding: "0.75rem",
   },
   cardContent: {
     flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
 }));
 

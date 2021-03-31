@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
@@ -12,8 +13,8 @@ import useStyles from "./styles";
 function Landing() {
   const classes = useStyles();
   return (
-    <div className={classes.heroContent}>
-      <Container maxWidth="sm">
+    <Container maxWidth="md">
+      <Paper elevation={2} className={classes.heroContent}>
         <Typography
           component="h1"
           variant="h2"
@@ -39,7 +40,7 @@ function Landing() {
               </Button>
             </Grid>
             <Grid item>
-              <Link component={RouterLink} to="/" color="inherit">
+              <Link component={RouterLink} to="/cart" color="inherit">
                 <Button variant="outlined" color="primary">
                   Cart
                 </Button>
@@ -47,8 +48,8 @@ function Landing() {
             </Grid>
           </Grid>
         </div>
-      </Container>
-    </div>
+      </Paper>
+    </Container>
   );
 }
 

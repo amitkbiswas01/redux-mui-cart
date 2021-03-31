@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -12,9 +14,12 @@ import Container from "@material-ui/core/Container";
 import useStyles from "./styles";
 import LoadingSpinner from "../Loading/index";
 import data from "../../services/data";
+import { addToCart } from "../Cart/cartSlice";
 // import getProducts from "../../services/getProducts";
 
 function Products() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +39,7 @@ function Products() {
     setTimeout(() => {
       setProducts(data);
       setLoading(false);
-    }, 2000);
+    }, 200);
   }, []);
 
   const showDetails = (id) => {
@@ -47,7 +52,7 @@ function Products() {
         <LoadingSpinner />
       ) : (
         <>
-          <Container maxWidth="md">
+          <Container maxWidth="md" className={classes.header}>
             <Typography
               component="h1"
               variant="h3"
@@ -79,33 +84,44 @@ function Products() {
                       image={product.image}
                       title={product.title}
                     />
-                    <CardContent className={classes.cardContent}>
-                      <Container className={classes.titlePrice}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {product.name}
-                        </Typography>
+                    <div className={classes.description}>
+                      <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h6" component="h2">
+                          {product.title}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          color="primary"
+                          component="h2"
+                        >
                           ${product.price}
                         </Typography>
-                      </Container>
-                      <Typography>
-                        {product.description.slice(0, 127)} ...
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        size="small"
-                        color="primary"
-                        onClick={() => {
-                          showDetails(product.id);
-                        }}
-                      >
-                        Details
-                      </Button>
-                      <Button size="small" color="primary">
-                        Add to Cart
-                      </Button>
-                    </CardActions>
+                        <Typography>
+                          {product.description.slice(0, 127)} ...
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                          onClick={() => {
+                            showDetails(product.id);
+                          }}
+                        >
+                          Details
+                        </Button>
+                        <Button
+                          size="small"
+                          color="secondary"
+                          variant="contained"
+                          onClick={() => dispatch(addToCart(product.id))}
+                        >
+                          Add to Cart
+                        </Button>
+                      </CardActions>
+                    </div>
                   </Card>
                 </Grid>
               ))}

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -14,8 +16,10 @@ import useStyles from "./styles";
 import LoadingSpinner from "../Loading/index";
 // import getSingleProduct from "../../services/getSingleProduct";
 import data from "../../services/data";
+import { addToCart } from "../Cart/cartSlice";
 
 function Product() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const { id } = useParams();
 
@@ -61,9 +65,10 @@ function Product() {
                       {product.title}
                     </Typography>
                     <Typography
-                      variant="subtitle1"
+                      variant="h5"
+                      component="h2"
                       className={classes.price}
-                      color="secondary"
+                      color="primary"
                     >
                       $ {product.price}
                     </Typography>
@@ -75,7 +80,11 @@ function Product() {
                   </Grid>
                   <Grid item>
                     <Link component={RouterLink} to="/" color="inherit">
-                      <Button variant="outlined" color="primary">
+                      <Button
+                        onClick={() => dispatch(addToCart(product.id))}
+                        variant="outlined"
+                        color="primary"
+                      >
                         Add to Cart
                       </Button>
                     </Link>

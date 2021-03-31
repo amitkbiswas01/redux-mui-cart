@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectCount } from "../Cart/cartSlice";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,6 +20,8 @@ import useStyles from "./styles";
 
 export default function Navbar() {
   const classes = useStyles();
+  const count = useSelector(selectCount);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -69,7 +74,7 @@ export default function Navbar() {
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={count} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -101,29 +106,31 @@ export default function Navbar() {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="products" color="inherit">
-                <Typography variant="subtitle1" noWrap>
-                  <Link component={RouterLink} to="/products" color="inherit">
+              <Link component={RouterLink} to="/products" color="inherit">
+                <IconButton aria-label="products" color="inherit">
+                  <Typography variant="subtitle1" noWrap>
                     Products
-                  </Link>
-                </Typography>
-              </IconButton>
-              <IconButton
-                className={classes.cart}
-                aria-label="show new mails"
-                color="inherit"
-              >
-                <Badge
-                  className={classes.cartIcon}
-                  badgeContent={4}
-                  color="secondary"
+                  </Typography>
+                </IconButton>
+              </Link>
+              <Link component={RouterLink} to="/cart" color="inherit">
+                <IconButton
+                  className={classes.cart}
+                  aria-label="show cart"
+                  color="inherit"
                 >
-                  <ShoppingCartIcon />
-                </Badge>
-                <Typography variant="subtitle1" noWrap>
-                  Cart
-                </Typography>
-              </IconButton>
+                  <Badge
+                    className={classes.cartIcon}
+                    badgeContent={count}
+                    color="secondary"
+                  >
+                    <ShoppingCartIcon />
+                  </Badge>
+                  <Typography variant="subtitle1" noWrap>
+                    Cart
+                  </Typography>
+                </IconButton>
+              </Link>
               <IconButton
                 edge="end"
                 aria-label="account of current user"
